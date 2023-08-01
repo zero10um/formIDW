@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Inscrição</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="styleform.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+  <script>
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const button = form.querySelector('.submit-button');
+
+      button.classList.add('loading');
+
+      const nome = form.querySelector('#nome').value;
+      const dataNasc = form.querySelector('#dataNasc').value;
+      const email = form.querySelector('#email').value;
+      const telefone = form.querySelector('#telefone').value;
+      const endereco = form.querySelector('#endereco').value;
+
+      const novoCadastro = {
+        nome: nome,
+        dataNasc: dataNasc,
+        email: email,
+        telefone: telefone,
+        endereco: endereco
+      };
+
+      // Obter cadastros existentes ou criar um array vazio se não houver cadastros ainda
+      const cadastros = JSON.parse(localStorage.getItem('cadastros')) || [];
+
+      // Adicionar o novo cadastro ao array de cadastros
+      cadastros.push(novoCadastro);
+
+      // Salvar o array de cadastros atualizado no localStorage
+      localStorage.setItem('cadastros', JSON.stringify(cadastros));
+
+      button.classList.remove('loading');
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Cadastro concluído com sucesso!',
+        html: 'Seu cadastro foi registrado.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+      form.reset();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleFormSubmit);
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Formulário de Inscrição para UNIR</h1>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="dataNasc">Data de Nascimento:</label>
+      <input type="date" id="dataNasc" name="dataNasc" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefone">Contato do Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required>
+
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco" required>
+
+      <input class="submit-button" type="submit" value="Enviar">
+    </form>
+    <a class="back-button" href="index.html">Voltar para a página inicial</a>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
