@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff; /* Azul claro (aliceblue) */
+  background-color: #f0f8ff;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -12,20 +12,20 @@ body {
   text-align: center;
   padding: 20px;
   border-radius: 20px;
-  background-color: #fff; /* Branco */
+  background-color: #fff; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 90%;
 }
 
 h1 {
-  color: #00a1e0; /* Azul claro (unir color) */
+  color: #00a1e0;
 }
 
 .go-to-form-button,
 .go-to-cadastros-button {
   display: inline-block;
-  background-color: #00a1e0; /* Azul claro (unir color) */
+  background-color: #00a1e0; 
   color: #fff; /* Branco */
   padding: 10px 20px;
   border-radius: 5px;
@@ -35,5 +35,5 @@ h1 {
 
 .go-to-form-button:hover,
 .go-to-cadastros-button:hover {
-  background-color: #0084b4; /* Azul claro mais escuro */
+  background-color: #0084b4;
 }
